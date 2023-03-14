@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { HeroInterface } from 'src/app/interfaces/hero-interface';
+import {Sort} from '@angular/material/sort';
 
 
 
@@ -11,8 +12,13 @@ import { HeroInterface } from 'src/app/interfaces/hero-interface';
 export class TableComponent {
 
   @Input('dataSource') dataSource:HeroInterface[]=[];
+  @Output() sortChange = new EventEmitter<Sort>();
 
-  displayedColumns: string[] = ['id', 'name', 'alterEgo', 'publisher', 'firstAppearance' , 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'alter_ego', 'publisher', 'first_appearance' , 'actions'];
+
+  announceSortChange(sortState: Sort) {
+    this.sortChange.emit(sortState);
+  }
 }
 
 

@@ -13,7 +13,7 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHeroes(): Observable<HeroInterface[]> {
-    return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes`);
+  getAllHeroes(params:any): Observable<HeroInterface[]> {
+    return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes`,{params});
   }
 }

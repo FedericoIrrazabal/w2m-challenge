@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     AppRoutingModule,
     ComponentsModule,
-    RouterModule
+    RouterModule,
+    MatPaginatorModule
 
   ],
   exports: [
