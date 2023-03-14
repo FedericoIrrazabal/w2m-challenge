@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoutesModule } from './routes/routes.module';
+import { LayoutModule } from './layout/layout.module';
 
 
 
@@ -24,6 +25,7 @@ import { RoutesModule } from './routes/routes.module';
     BrowserAnimationsModule,
     RoutesModule,
     HttpClientModule,
+    LayoutModule
 
   ],
   providers: [],
