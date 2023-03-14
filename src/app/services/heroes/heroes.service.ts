@@ -16,4 +16,8 @@ export class HeroesService {
   getAllHeroes(params:any): Observable<HeroInterface[]> {
     return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes`,{params});
   }
+
+  getHero(id:string): Observable<HeroInterface[]> {
+    return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes?id=${id}`);
+  }
 }

@@ -1,29 +1,34 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { TableComponent } from './table/table.component';
 
+
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HeaderComponent } from './header/header.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [TableComponent],
+  declarations: [TableComponent, HeaderComponent],
   imports: [
     CommonModule,
     MatTableModule,
-    MatPaginatorModule,
     MatIconModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule,
-    MatSortModule
+    FormsModule
   ],
-  exports: [TableComponent],
+  exports: [TableComponent, HeaderComponent],
 })
 export class ComponentsModule {}
