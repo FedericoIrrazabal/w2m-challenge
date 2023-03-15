@@ -3,7 +3,9 @@ import { HeroInterface } from 'src/app/interfaces/hero-interface';
 import { ControllerDataSourceInterface } from 'src/app/interfaces/heroes-pagination';
 import { HeroesService } from 'src/app/services/heroes/heroes.service';
 import { Sort } from '@angular/material/sort';
-import { dataForSearchInterface } from '../../interfaces/search-interface';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +24,11 @@ export class HomeComponent implements OnInit {
   };
   isFilterById: boolean = false;
 
-  constructor(private _heroesService: HeroesService) {}
+  constructor(
+    private _heroesService: HeroesService,
+    public _dialog: MatDialog,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -31,12 +37,8 @@ export class HomeComponent implements OnInit {
   private getHeroes() {
     this._heroesService.getAllHeroes(this.controllerDataSource).subscribe(
       (response) => {
-        if (this.controllerDataSource.q === '') {
-          this.totalElements = 20;
-        } else {
-          this.totalElements = response.length;
-        }
-        this.heroesDataSource = response;
+        this.heroesDataSource = response.body;
+        this.totalElements = response.headers.get('X-Total-Count');
       },
       (error) => {
         console.log(error);
@@ -53,6 +55,18 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+      }
+    );
+  }
+
+  private deleteHero(heroId: number) {
+    this._heroesService.deleteHero(heroId).subscribe(
+      (res) => {
+        this.openSnackBar('Hero deleted successfully', 'Ok');
+        this.getHeroes();
+      },
+      (err) => {
+        this.openSnackBar('Error deleting hero', 'Ok');
       }
     );
   }
@@ -81,5 +95,32 @@ export class HomeComponent implements OnInit {
   onChangeCheckbox(event: boolean) {
     this.isFilterById = event;
     this.onSearchChange(this.controllerDataSource.q || '');
+  }
+
+  onShowModalDelete(value: HeroInterface) {
+    this.openDialog('10ms', '10ms', value);
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    hero: HeroInterface
+  ): void {
+    let dialogRef = this._dialog.open(ModalComponent, {
+      width: '400px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+    let instance = dialogRef.componentInstance;
+    instance.superHero = hero.name;
+    instance.dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.deleteHero(hero.id);
+      }
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }

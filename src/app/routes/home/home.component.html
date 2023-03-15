@@ -1,5 +1,5 @@
 <app-header (dataForSearchChange)="onSearchChange($event)" (changeCheckbox)="onChangeCheckbox($event)"></app-header>
-<app-table [dataSource]="heroesDataSource" (sortChange)="onSortChange($event)"></app-table>
+<app-table [dataSource]="heroesDataSource" (sortChange)="onSortChange($event)" (showModalDelete)="onShowModalDelete($event)"></app-table>
 <mat-paginator
   [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons

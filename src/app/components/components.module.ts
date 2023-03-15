@@ -14,11 +14,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
-  declarations: [TableComponent, HeaderComponent],
+  declarations: [TableComponent, HeaderComponent, ModalComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule,
     MatTableModule,
     MatIconModule,
     MatSortModule,
@@ -26,9 +34,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
     MatCheckboxModule,
-    FormsModule
+   
   ],
-  exports: [TableComponent, HeaderComponent],
+  exports: [TableComponent, HeaderComponent, ModalComponent],
 })
 export class ComponentsModule {}

@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class="d-flex justify-content-center py-5">
+    <button class="mx-4" mat-mini-fab color="accent" [routerLink]="['/home']">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+  <span class="fill-remaining-space">{{
+    isEdit ? "Update hero" : "Create hero"
+  }}</span>
+</mat-toolbar>
+<div class="contained">
+  <mat-card class="card-center">
+    <mat-card-content>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <form
+            class="d-flex flex-column mb-3"
+            [formGroup]="heroForm"
+            (ngSubmit)="onSubmit()"
+          >
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Alter ego</mat-label>
+              <input matInput formControlName="alter_ego"/>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Publisher</mat-label>
+              <input matInput formControlName="publisher" />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>First appearance</mat-label>
+              <input matInput formControlName="first_appearance" />
+            </mat-form-field>
+            <div>
+              <button
+                mat-fab
+                extended
+                color="primary"
+                class="margin-x"
+                [disabled]="!heroForm.valid"
+              >
+                <mat-icon>{{ isEdit ? "update" : "add" }}</mat-icon>
+                {{ isEdit ? "Update hero" : "Add hero" }}
+              </button>
+            </div>
+          </form></mat-card-content
+        >
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

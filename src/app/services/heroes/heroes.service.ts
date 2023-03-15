@@ -13,11 +13,23 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllHeroes(params:any): Observable<HeroInterface[]> {
-    return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes`,{params});
+  getAllHeroes(params:any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/heroes`,{params, observe: 'response'});
   }
 
   getHero(id:string): Observable<HeroInterface[]> {
     return this.http.get<HeroInterface[]>(`${this.apiUrl}/heroes?id=${id}`);
+  }
+
+  createHero(hero: HeroInterface): Observable<HeroInterface> {
+    return this.http.post<HeroInterface>(`${this.apiUrl}/heroes`,  hero );
+  }
+
+  updateHero(id:string,hero: HeroInterface): Observable<HeroInterface> {
+    return this.http.put<HeroInterface>(`${this.apiUrl}/heroes/${id}`,  hero );
+  }
+
+  deleteHero(id: number): Observable<HeroInterface> {
+    return this.http.delete<HeroInterface>(`${this.apiUrl}/heroes/${id}`);
   }
 }

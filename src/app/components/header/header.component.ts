@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { dataForSearchInterface } from 'src/app/interfaces/search-interface';
+
 
 @Component({
   selector: 'app-header',
