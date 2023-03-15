@@ -10,6 +10,7 @@ import { LayoutModule } from './layout/layout.module';
 import { ComponentsModule } from './components/components.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { MaterialModule } from './material/material.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,6 +21,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     HttpClientModule,
     LayoutModule,
     ComponentsModule,
+    MaterialModule
   ],
   providers: [
     {
