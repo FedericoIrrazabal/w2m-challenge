@@ -6,5 +6,6 @@
   aria-label="Select page of periodic elements"
     [length]="totalElements"
     (page)="onPageChange($event)"
+    [pageSize]="controllerDataSource._limit"
 >
 </mat-paginator>

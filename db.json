@@ -22,11 +22,11 @@
       "first_appearance": "Flash Comics #1"
     },
     {
-      "id": 4,
       "name": "Green Lantern",
-      "publisher": "DC Comics",
       "alter_ego": "Alan Scott",
-      "first_appearance": "All-American Comics #16"
+      "publisher": "DC Comics",
+      "first_appearance": "All-American Comics #16",
+      "id": 4
     },
     {
       "id": 5,
@@ -139,6 +139,20 @@
       "publisher": "Marvel Comics",
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48"
+    },
+    {
+      "name": "Fede",
+      "alter_ego": "23",
+      "publisher": "23",
+      "first_appearance": "23",
+      "id": 21
+    },
+    {
+      "name": "Fede",
+      "alter_ego": "233",
+      "publisher": "2323",
+      "first_appearance": "123",
+      "id": 22
     }
   ]
 }

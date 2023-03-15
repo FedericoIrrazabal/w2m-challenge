@@ -18,10 +18,13 @@ import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SpinnerComponent } from './spinner/spinner.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
-  declarations: [TableComponent, HeaderComponent, ModalComponent],
+  declarations: [TableComponent, HeaderComponent, ModalComponent, SpinnerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -36,8 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule
    
   ],
-  exports: [TableComponent, HeaderComponent, ModalComponent],
+  exports: [TableComponent, HeaderComponent, ModalComponent, SpinnerComponent],
 })
 export class ComponentsModule {}

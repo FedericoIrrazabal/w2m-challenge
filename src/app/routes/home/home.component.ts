@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   totalElements: number = 20;
   controllerDataSource: ControllerDataSourceInterface = {
     _page: 0,
-    _limit: 5,
+    _limit: 10,
     _sort: 'id',
     _order: 'asc',
     q: '',

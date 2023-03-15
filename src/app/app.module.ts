@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
-
+import { ComponentsModule } from './components/components.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,8 +19,15 @@ import { LayoutModule } from './layout/layout.module';
     RoutesModule,
     HttpClientModule,
     LayoutModule,
+    ComponentsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
